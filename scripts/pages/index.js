@@ -1,12 +1,12 @@
+    // import datas
     async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        
-        const response = await fetch('../../data/photographers.json');
-        const photographers = await response.json();
-        console.log(photographers); 
-        return (photographers);
+        const r = await fetch('../../data/photographers.json');
+        if (r.ok == true) {
+            return r.json();
+        }
+        throw new Error('Impossible de contacter le serveur')
     }
+    getPhotographers().then(photographers => console.log(photographers))
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
