@@ -5,6 +5,11 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 header {
     display: flex;
@@ -29,6 +34,7 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+    margin-bottom: 50px;
 }
 
 .photographer_section article {
@@ -37,14 +43,38 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 0;
+}
+
+.photographer_section .location {
+    color: #901C1C;
+    font-size: 13px;
+}
+
+.photographer_section .slogan {
+    font-size: 10px;
+}
+
+.photographer_section .dailyRate {
+    color: #757575;
+    font-size: 9px;
+}
+
+.photographer_section article p {
+    margin: 0px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3), 0px 50px 70px rgba(0, 0, 0, 0.1);
+    
 }

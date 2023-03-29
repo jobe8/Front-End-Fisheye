@@ -4,26 +4,40 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const link = document.createElement("a");
-        link.setAttribute("href", 'photographer.html?id=${id}');
+        // create elements
         const article = document.createElement( 'article' );
+        const link = document.createElement("a");
         const img = document.createElement( 'img' );
-        img.setAttribute("src", portrait)
         const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
         const location = document.createElement( 'p' );
-        location.textContent = city + ', ' + country;
         const slogan = document.createElement( 'p' );
-        slogan.textContent = tagline;
         const dailyRate = document.createElement( 'p' );
+
+        // set attributes
+        link.setAttribute("href", 'photographer.html?id=${id}');
+        img.setAttribute("src", portrait);
+        img.setAttribute('alt', '');
+        h2.setAttribute('aria-label', '${name}');
+
+        // text content
+        h2.textContent = name;
+        location.textContent = city + ', ' + country;
+        slogan.textContent = tagline;
         dailyRate.textContent = price +'€/jour';
-        link.appendChild(article);
-        article.appendChild(img);
-        article.appendChild(h2);
+
+        // set classes
+        location.classList.add('location');
+        slogan.classList.add('slogan');
+        dailyRate.classList.add('dailyRate');
+
+        // append child
+        article.appendChild(link);
+        link.appendChild(img);
+        link.appendChild(h2);
         article.appendChild(location);
         article.appendChild(slogan);
         article.appendChild(dailyRate);
-        return (link);
+        return (article);
     }
     return { name, picture, getUserCardDOM }
 }
