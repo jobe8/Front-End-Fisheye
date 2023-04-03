@@ -14,10 +14,10 @@ function photographerFactory(data) {
         const dailyRate = document.createElement( 'p' );
 
         // set attributes
-        link.setAttribute("href", 'photographer.html?id=${id}');
+        link.setAttribute("href", `./photographer.html?id=${id}`);
         img.setAttribute("src", portrait);
         img.setAttribute('alt', '');
-        h2.setAttribute('aria-label', '${name}');
+        h2.setAttribute('aria-label', `${name}`);
 
         // text content
         h2.textContent = name;
