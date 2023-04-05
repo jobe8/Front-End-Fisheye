@@ -1,3 +1,7 @@
+img {
+    object-fit: cover;
+}
+
 #contact_modal {
     display: none;
 }
@@ -6,6 +10,37 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+}
+
+.photograph-header article {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.name-photographer {
+    color: #D3573C;
+    font-size: 64px;
+    margin: 0;
+}
+
+.location-photographer {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.slogan-photographer {
+    font-size: 18px;
+    color: #525252;
+}
+
+.img-photographer {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3), 0px 50px 70px rgba(0, 0, 0, 0.1);  
 }
 
 .contact_button {

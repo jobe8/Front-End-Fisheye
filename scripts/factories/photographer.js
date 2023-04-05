@@ -6,38 +6,98 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         // create elements
         const article = document.createElement( 'article' );
-        const link = document.createElement("a");
-        const img = document.createElement( 'img' );
-        const h2 = document.createElement( 'h2' );
-        const location = document.createElement( 'p' );
-        const slogan = document.createElement( 'p' );
-        const dailyRate = document.createElement( 'p' );
+        const link = document.createElement('a');
+        const imgPhotographer = document.createElement( 'img' );
+        const namePhotographer = document.createElement( 'h2' );
+        const locationPhotographer = document.createElement( 'p' );
+        const sloganPhotographer = document.createElement( 'p' );
+        const pricePhotographer = document.createElement( 'p' );
 
         // set attributes
         link.setAttribute("href", `./photographer.html?id=${id}`);
-        img.setAttribute("src", portrait);
-        img.setAttribute('alt', '');
-        h2.setAttribute('aria-label', `${name}`);
+        link.setAttribute("alt", name);
+        imgPhotographer.setAttribute("src", portrait);
 
         // text content
-        h2.textContent = name;
-        location.textContent = city + ', ' + country;
-        slogan.textContent = tagline;
-        dailyRate.textContent = price +'€/jour';
+        namePhotographer.textContent = name;
+        locationPhotographer.textContent = city + ', ' + country;
+        sloganPhotographer.textContent = tagline;
+        pricePhotographer.textContent = price +'€/jour';
 
         // set classes
-        location.classList.add('location');
-        slogan.classList.add('slogan');
-        dailyRate.classList.add('dailyRate');
+        imgPhotographer.classList.add('img-photographer');
+        namePhotographer.classList.add('name-photographer');
+        locationPhotographer.classList.add('location-photographer');
+        sloganPhotographer.classList.add('slogan-photographer');
+        pricePhotographer.classList.add('price-photographer');
 
         // append child
         article.appendChild(link);
-        link.appendChild(img);
-        link.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(slogan);
-        article.appendChild(dailyRate);
+        link.appendChild(imgPhotographer);
+        link.appendChild(namePhotographer);
+        article.appendChild(locationPhotographer);
+        article.appendChild(sloganPhotographer);
+        article.appendChild(pricePhotographer);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getUserHeaderDOM () {
+
+        // create elements
+        const header = document.createElement('article');
+        const descriptionPhotographer = document.createElement('div');
+        const namePhotographer = document.createElement('h1');
+        const locationPhotographer = document.createElement('p');
+        const sloganPhotographer = document.createElement('p');
+        const btnContact = document.querySelector('.contact_button');
+        const imgPhotographer = document.createElement('img');
+
+
+        // text content
+        namePhotographer.textContent = name;
+        locationPhotographer.textContent = city + ', ' + country;
+        sloganPhotographer.textContent = tagline;
+
+
+        // set classes
+        descriptionPhotographer.classList.add('description');
+        namePhotographer.classList.add('name-photographer');
+        locationPhotographer.classList.add('location-photographer');
+        sloganPhotographer.classList.add('slogan-photographer');
+        imgPhotographer.classList.add('img-photographer');
+
+        // photograph setAttribute
+        imgPhotographer.setAttribute("src", portrait);
+        imgPhotographer.setAttribute("alt", "");
+
+        // photograph appendChild
+        header.appendChild(descriptionPhotographer);
+        descriptionPhotographer.appendChild(namePhotographer);
+        descriptionPhotographer.appendChild(locationPhotographer);
+        descriptionPhotographer.appendChild(sloganPhotographer);
+        header.appendChild(btnContact);
+        header.appendChild(imgPhotographer);
+        return (header);
+    }
+
+    return { name, picture, getUserCardDOM, getUserHeaderDOM }
+}
+
+function mediaFactory() {
+    // photograph picture
+
+    function displayMedia() {
+    const galery = document.querySelector('.photograph-picture');
+
+    // photograph short
+    const li_short_option = document.querySelectorAll('.option-short');
+    const btn_Short = document.querySelector('.btnShort');
+    const ul_short = document.querySelector('.ul-short');
+    const iconAngle2 = document.createElement('i');
+    iconAngle2.classList.add('fa-solid');
+    iconAngle2.classList.add('fa-angle-down');
+    iconAngle2.classList.add('angle-down');
+}
+
+return { displayMedia }
 }

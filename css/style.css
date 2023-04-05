@@ -46,35 +46,33 @@ h1 {
     text-align: center;
 }
 
-.photographer_section article h2 {
+.name-photographer {
     color: #D3573C;
     font-size: 36px;
-    margin-bottom: 0;
 }
 
-.photographer_section .location {
+.location-photographer {
     color: #901C1C;
     font-size: 13px;
 }
 
-.photographer_section .slogan {
+.slogan-photographer {
     font-size: 10px;
 }
 
-.photographer_section .dailyRate {
+.price-photographer {
     color: #757575;
     font-size: 9px;
 }
 
-.photographer_section article p {
+.photographer_section article {
     margin: 0px;
 }
 
-.photographer_section article img {
+.img-photographer {
     height: 200px;
     width: 200px;
     border-radius: 100%;
     object-fit: cover;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3), 0px 50px 70px rgba(0, 0, 0, 0.1);
-    
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3), 0px 50px 70px rgba(0, 0, 0, 0.1);   
 }
