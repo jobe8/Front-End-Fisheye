@@ -115,7 +115,7 @@ function mediaFactory(photographer, data) {
             media.appendChild(thumb);
         }
 
-        // Info media (title + likes)
+        // Info media div (title + likes)
         const infoMedia = document.createElement('div');
         infoMedia.classList = "info-media";
 

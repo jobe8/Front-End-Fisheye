@@ -20,7 +20,7 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <section class="filter">
-        <h3 id="trierPar">Trier par </h3>
+        <h3>Trier par </h3>
         <div class="dropdownMenu">
             <div class="filter-select">
                 <a href="#" role="button" class="filter-select__trigger" aria-controls="filter-options" aria-haspopup="listbox" aria-label="Trier par">
@@ -45,13 +45,19 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 class="title-modal">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" alt="" />
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text" />
+            <label>Nom</label>
+						<input type="text" />
+            <label>Email</label>
+						<input type="text" />
+            <label>Votre message</label>
+						<textarea name="message"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
