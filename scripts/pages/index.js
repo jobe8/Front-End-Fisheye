@@ -1,12 +1,16 @@
-// get the JSON data
 async function getPhotographers() {
-    const r = await fetch('../../data/photographers.json');
-    if (r.ok == true) {
-        return r.json();
-    }
-    throw new Error('Impossible de contacter le serveur')
+    // return fetch("data/photographers.json")
+    //     .then(function(res) {
+    //         if (res.ok) {
+    //             return res.json();
+    //         }
+    //     })
+    //     .catch(function(err) {
+    //         console.log(err)
+    //     });
+        const response = await fetch("data/photographers.json")
+        return await response.json();
 }
-getPhotographers().then(photographers => console.log(photographers))
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
@@ -16,13 +20,12 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-}
+};
 
 async function init() {
-    // Retrieves data from photographers
+    // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-}
+};
 
 init();
-    

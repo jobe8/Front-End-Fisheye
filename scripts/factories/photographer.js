@@ -38,13 +38,14 @@ function photographerFactory(data) {
         article.appendChild(locationPhotographer);
         article.appendChild(sloganPhotographer);
         article.appendChild(pricePhotographer);
+
         return (article);
     }
 
     function getUserHeaderDOM () {
 
         // create elements
-        const header = document.createElement('article');
+        const header = document.createElement('section');
         const descriptionPhotographer = document.createElement('div');
         const namePhotographer = document.createElement('h1');
         const locationPhotographer = document.createElement('p');
@@ -70,6 +71,10 @@ function photographerFactory(data) {
         imgPhotographer.setAttribute("src", portrait);
         imgPhotographer.setAttribute("alt", "");
 
+        // fixed Insert photopgrapher with total likes and price  
+        const pricePhotographer = document.querySelector(".price");
+        pricePhotographer.textContent = price + "€ / jour";
+
         // photograph appendChild
         header.appendChild(descriptionPhotographer);
         descriptionPhotographer.appendChild(namePhotographer);
@@ -77,27 +82,61 @@ function photographerFactory(data) {
         descriptionPhotographer.appendChild(sloganPhotographer);
         header.appendChild(btnContact);
         header.appendChild(imgPhotographer);
+
         return (header);
     }
 
     return { name, picture, getUserCardDOM, getUserHeaderDOM }
 }
 
-function mediaFactory() {
-    // photograph picture
 
-    function displayMedia() {
-    const galery = document.querySelector('.photograph-picture');
 
-    // photograph short
-    const li_short_option = document.querySelectorAll('.option-short');
-    const btn_Short = document.querySelector('.btnShort');
-    const ul_short = document.querySelector('.ul-short');
-    const iconAngle2 = document.createElement('i');
-    iconAngle2.classList.add('fa-solid');
-    iconAngle2.classList.add('fa-angle-down');
-    iconAngle2.classList.add('angle-down');
-}
+function mediaFactory(photographer, data) {
 
-return { displayMedia }
+    const path = `assets/photographers/${photographer}/`;
+    const { id, likes, price, title, video, image, date} = data;
+
+    console.log(path)
+    console.log(data)
+
+    function getMediaCardDOM() {
+
+        const media = document.createElement("article");
+
+        // Media Image or Video
+        if (image) {
+            const thumb = document.createElement("img");
+            thumb.setAttribute("src", path+image);
+            media.appendChild(thumb);
+        }
+        else if (video) {
+            const thumb = document.createElement("video");
+            thumb.setAttribute("src", path+video);
+            media.appendChild(thumb);
+        }
+
+        // Info media (title + likes)
+        const infoMedia = document.createElement('div');
+        infoMedia.classList = "info-media";
+
+        // Media title
+        const titleMedia = document.createElement("h2");
+        titleMedia.classList = "title-media";
+        titleMedia.textContent = title;
+
+        // Media likes
+        const likesMedia = document.createElement("span");
+        likesMedia.className = "likes-media";
+        likesMedia.innerHTML = likes + "<i class='fa-solid fa-heart'></i>";
+        likesMedia.setAttribute("aria-label", "likes");
+
+        // add elements to article
+        media.appendChild(infoMedia);
+        infoMedia.appendChild(titleMedia);
+        infoMedia.appendChild(likesMedia);
+
+        return media;
+    }
+
+    return { getMediaCardDOM };
 }
