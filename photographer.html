@@ -44,24 +44,66 @@
     </main>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
+				<header class="header-modal">
           <h2 class="title-modal">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="" />
+          <img class="cross" src="assets/icons/close.svg" onclick="closeModal()" alt="" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input type="text" />
-            <label>Nom</label>
-						<input type="text" />
-            <label>Email</label>
-						<input type="text" />
-            <label>Votre message</label>
-						<textarea name="message"></textarea>
-					</div>
+				<form 
+        id="form"
+        name="reserve"
+        action="photographer.html"
+        method="get"
+        onsubmit="return validate();"
+        >
+            <div
+              class="formData">
+              <label for="first">Prénom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                minlength="2"
+              /><br>
+            </div>
+            <div
+              class="formData">
+              <label for="last">Nom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                minlength="2"
+              /><br>
+            </div>
+            <div
+              class="formData">
+              <label for="email">E-mail</label><br>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              /><br>
+            </div>
+            <div
+              class="formData">
+              <label for="message">Votre message</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="message"
+                name="message"
+              /><br>
+            </div>
           <button class="contact_button">Envoyer</button>
 				</form>
-			</div>
+      <!-- Message validation after submit -->
+      <div id="confirmation-submit"> 
+      </div>
+      <button id="close-btn" class="contact_button">Fermer</button>
+    </div>
 		</div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>

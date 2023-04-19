@@ -52,10 +52,11 @@ img {
     cursor: pointer;
 }
 
+/* modal */
+
 #contact_modal {
     display: none;
     position: fixed;
-    padding-top: 84px;
     z-index: 1;
     left: 0;
     top: 0;
@@ -97,36 +98,59 @@ form label {
     color: #312E2E;
 }
 
-
 form {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
+    margin-top: 50px;
 }
 
 form div {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 26px;
-    margin-top: 60px;
+    margin-bottom: 20px;
 }
 
-form input, form textarea {
+form input {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
     font-size: 24px;
-    margin-bottom: 20px;
     padding: 10px;
     font-family: sans-serif;
 }
 
-form textarea {
-    padding-bottom: 170px;
+form #message {
+    height: 170px;
+}
+
+/* display message error in form */
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 15px;
+    color: #525252;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+    border: 2px solid #525252;
+}
+  
+#confirmation-submit {
+    font-size: 36px;
 }
 
 
