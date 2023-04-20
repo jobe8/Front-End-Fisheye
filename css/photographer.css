@@ -1,3 +1,7 @@
+main {
+    margin: 0 100px;
+}
+
 img {
     object-fit: cover;
 }
@@ -5,8 +9,9 @@ img {
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px 20px 100px;
+    margin-bottom: 20px;
     display: flex;
+    width: 100%;
 }
 
 .photograph-header section {
@@ -79,8 +84,12 @@ img {
 }
 
 .modal header {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
+    margin-top: 20px;
+    margin-bottom: 70px;
 }
 
 .modal header img {
@@ -104,7 +113,6 @@ form {
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
-    margin-top: 50px;
 }
 
 form div {
@@ -115,7 +123,6 @@ form div {
 }
 
 form input {
-    width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
@@ -125,7 +132,9 @@ form input {
 }
 
 form #message {
-    height: 170px;
+    padding-bottom: 170px;
+    font-size: 24px;
+    font-family: "DM Sans", sans-serif;
 }
 
 /* display message error in form */
@@ -148,33 +157,29 @@ form #message {
 .formData[data-error-visible="true"] .text-control {
     border: 2px solid #525252;
 }
-  
-#confirmation-submit {
-    font-size: 36px;
-}
 
 
 /* Sort */
 
 
-/* medias */ 
+/* medias */
 
 .medias {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
     gap: 30px; 
     margin-bottom: 130px;
 }
 
 .medias article {
+    justify-self: center;
     display: flex;
     flex-direction: column;
     width: 350px;
-    justify-self: center;
-    justify-content: center;
 }
 
-.medias img {
+.medias img, .medias video  {
     width: 350px;
     height: 300px;
     border-radius: 5px;
@@ -230,7 +235,6 @@ form #message {
 
 .filter {
     display: flex;
-    margin: 0 100px;
     gap: 30px;
     align-items: center;
     font-size: 18px;

@@ -96,20 +96,17 @@ function mediaFactory(photographer, data) {
     const path = `assets/photographers/${photographer}/`;
     const { id, likes, price, title, video, image, date} = data;
 
-    console.log(path)
-    console.log(data)
-
     function getMediaCardDOM() {
 
         const media = document.createElement("article");
 
         // Media Image or Video
-        if (image) {
+        if (image != undefined)  {
             const thumb = document.createElement("img");
             thumb.setAttribute("src", path+image);
             media.appendChild(thumb);
         }
-        else if (video) {
+        else {
             const thumb = document.createElement("video");
             thumb.setAttribute("src", path+video);
             media.appendChild(thumb);

@@ -15,7 +15,7 @@
         <img src="assets/images/logo.png" class="logo" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
@@ -42,18 +42,14 @@
         <span class="price"></span>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
 			<div class="modal">
 				<header class="header-modal">
           <h2 class="title-modal">Contactez-moi</h2>
-          <img class="cross" src="assets/icons/close.svg" onclick="closeModal()" alt="" />
+          <img class="close-modal" src="assets/icons/close.svg" onclick="closeModal()" alt="" />
         </header>
 				<form 
-        id="form"
-        name="reserve"
-        action="photographer.html"
-        method="get"
-        onsubmit="return validate();"
+          id="form"
         >
             <div
               class="formData">
@@ -90,20 +86,16 @@
             <div
               class="formData">
               <label for="message">Votre message</label><br>
-              <input
+              <textarea
                 class="text-control"
                 type="text"
                 id="message"
                 name="message"
-              /><br>
+              ></textarea><br>
             </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
 				</form>
-      <!-- Message validation after submit -->
-      <div id="confirmation-submit"> 
       </div>
-      <button id="close-btn" class="contact_button">Fermer</button>
-    </div>
 		</div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
