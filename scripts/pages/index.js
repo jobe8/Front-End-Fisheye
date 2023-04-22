@@ -8,8 +8,8 @@ async function getPhotographers() {
     //     .catch(function(err) {
     //         console.log(err)
     //     });
-        const response = await fetch("data/photographers.json")
-        return await response.json();
+    const response = await fetch("data/photographers.json")
+    return await response.json();
 }
 
 async function displayData(photographers) {

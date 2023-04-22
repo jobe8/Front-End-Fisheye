@@ -4,6 +4,7 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+
         // create elements
         const article = document.createElement( 'article' );
         const link = document.createElement('a');
@@ -53,12 +54,10 @@ function photographerFactory(data) {
         const btnContact = document.querySelector('.contact_button');
         const imgPhotographer = document.createElement('img');
 
-
         // text content
         namePhotographer.textContent = name;
         locationPhotographer.textContent = city + ', ' + country;
         sloganPhotographer.textContent = tagline;
-
 
         // set classes
         descriptionPhotographer.classList.add('description');
@@ -71,7 +70,8 @@ function photographerFactory(data) {
         imgPhotographer.setAttribute("src", portrait);
         imgPhotographer.setAttribute("alt", "");
 
-        // fixed Insert photopgrapher with total likes and price  
+        // fixed insert photopgrapher with total likes and price
+
         const pricePhotographer = document.querySelector(".price");
         pricePhotographer.textContent = price + "€ / jour";
 
@@ -94,11 +94,12 @@ function photographerFactory(data) {
 function mediaFactory(photographer, data) {
 
     const path = `assets/photographers/${photographer}/`;
-    const { id, likes, price, title, video, image, date} = data;
+    const { id, likes, title, video, image, date, price} = data;
 
     function getMediaCardDOM() {
 
         const media = document.createElement("article");
+        media.classList = "media-article";
 
         // Media Image or Video
         if (image != undefined)  {
@@ -133,7 +134,8 @@ function mediaFactory(photographer, data) {
         infoMedia.appendChild(likesMedia);
 
         return media;
-    }
+
+    } 
 
     return { getMediaCardDOM };
 }

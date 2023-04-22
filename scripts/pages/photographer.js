@@ -22,37 +22,44 @@ async function displayDataHeader(photographer) {
     headerSection.appendChild(userHeaderDOM);
 }
 
+// Initialize for medias sort default : by popularity
+let sortedMedias = false;
 
 // Medias block
-
 async function displayMedia(photographer, medias) {
     const mediaSection = document.querySelector(".medias");
+
+    // sort default : by popularity
+    if (sortedMedias == false) {
+        medias.sort(sortPopularity);
+        sortedMedias = true;
+    }
 
     medias.forEach((media) => {
         const mediaModel = mediaFactory(photographer, media);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
-    });  
+    });
+    
 }
 
 async function init() {
 
     const { photographers, media } = await getPhotographers();
 
-    const photographer = photographers.find(photographer => id === photographer.id);
+    const photographer = photographers.find((photographer) => id === photographer.id);
     displayDataHeader(photographer);
     
+    // firstname for the media path
     let firstname = photographer.name.split(" ")[0];
     if (firstname.match("-")) {
         firstname = firstname.replace("-", " ");
     } 
 
-    const medias = media.filter(m => id === m.photographerId);
-
-    console.log(firstname);
-    console.log(medias);
+    const medias = media.filter((m) => id === m.photographerId);
 
     displayMedia(firstname, medias);
-}
+    filterMedia(medias, firstname);
+};
 
 init();
