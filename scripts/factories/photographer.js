@@ -128,6 +128,29 @@ function mediaFactory(photographer, data) {
         likesMedia.innerHTML = likes + "<i class='fa-solid fa-heart'></i>";
         likesMedia.setAttribute("aria-label", "likes");
 
+
+        // click on like icon of media and increment total likes
+        let isLiked = false;
+        let mediaLikes = Number.parseInt(likes, 10);
+
+        likesMedia.addEventListener('click', (event) => {
+            const totalLikes = document.querySelector('.total-likes');
+            // if the like icon hasn't been clicked
+            if (isLiked == false) {
+                totalLikes.innerHTML = parseInt(totalLikes.innerHTML, 10) + 1;
+                mediaLikes++;
+                isLiked = true;
+            } 
+            // if the like icon has been clicked
+            else {
+                totalLikes.innerHTML = parseInt(totalLikes.innerHTML, 10) - 1;
+                mediaLikes--;
+                isLiked = false;
+            }
+            likesMedia.innerHTML = mediaLikes + "<i class='fa-solid fa-heart'></i>";
+        });
+
+
         // add elements to article
         media.appendChild(infoMedia);
         infoMedia.appendChild(titleMedia);

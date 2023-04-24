@@ -28,6 +28,7 @@ let sortedMedias = false;
 // Medias block
 async function displayMedia(photographer, medias) {
     const mediaSection = document.querySelector(".medias");
+    const totalLikes = document.querySelector(".total-likes");
 
     // sort default : by popularity
     if (sortedMedias == false) {
@@ -35,12 +36,19 @@ async function displayMedia(photographer, medias) {
         sortedMedias = true;
     }
 
+    let total_likes = 0;
+
     medias.forEach((media) => {
+        // adds up the likes of all the media in the insert 
+        total_likes += media.likes; 
         const mediaModel = mediaFactory(photographer, media);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
     });
-    
+
+    // display result total likes of all the media in insert
+    totalLikes.innerHTML = total_likes;
+
 }
 
 async function init() {
