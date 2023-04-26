@@ -1,4 +1,4 @@
-function filterMedia(medias, firstname) {
+function sortMedias(medias, firstname) {
     const selectedSort = document.querySelector('#sort');
 
     selectedSort.addEventListener('change', (event) => {

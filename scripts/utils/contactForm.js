@@ -1,14 +1,14 @@
 // DOM var
 const body = document.querySelector('body');
 const main = document.querySelector('#main');
-const modal = document.getElementById("contact_modal");
+const modal = document.getElementById("contact-modal");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById('form');
 const first = document.getElementById('first');
 const last = document.getElementById('last');
 const email = document.getElementById('email');
 const message = document.getElementById('message');
-const openModalBtn = document.querySelector('.contact_button');
+const openModalBtn = document.querySelector('.contact-button');
 const closeModalBtn = document.querySelector('.close-modal');
 const titleModal = document.querySelector(".title-modal");
 

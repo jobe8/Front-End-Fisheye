@@ -67,7 +67,7 @@ async function init() {
     const medias = media.filter((m) => id === m.photographerId);
 
     displayMedia(firstname, medias);
-    filterMedia(medias, firstname);
+    sortMedias(medias, firstname);
 };
 
 init();

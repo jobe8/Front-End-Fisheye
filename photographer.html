@@ -12,12 +12,12 @@
   <body>
     <header>
       <a href="./index.html" alt="Fisheye Home page">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo"/>
       </a>
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="sort-medias">
         <label for="sort">Trier par</label>
@@ -29,19 +29,36 @@
       </div>
       <section class="medias">
       </section>
-      <span class="insert-info">
-        <div class="counter-likes">
+      <div class="insert-info">
+        <span class="counter-likes">
           <p class="total-likes"></p>
           <i class="fa-solid fa-heart"></i>
-        </div>
-        <div class="price"></div>
-      </span>
+        </span>
+        <span class="price"></span>
+      </div>
     </main>
-    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+    <div id="lightbox-modal" aria-label="image closeup view" aria-hidden="true" aria-modal="true" tabindex="0" role="dialog">
+			<div class="modal">
+        <figure class="left">
+          <a href="#" class="prev" alt="Previous image" onclick="changeSlide(-1)"><img src="assets/icons/left-arrow.svg" alt=""></a>
+        </figure>
+        <div class="content-lightbox">
+        </div>
+        <figure class="right">
+          <a href="#" class="next" alt="Next image" onclick="changeSlide(1)"><img src="assets/icons/right-arrow.svg" alt=""></a>
+        </figure>
+        <button class="close-lightbox" alt="dialog" onclick="closeLightbox()">
+          <img src="assets/icons/close-lightbox.svg" alt="">
+        </button>
+      </div>
+    </div>
+    <div id="contact-modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
 			<div class="modal">
 				<header class="header-modal">
           <h2 class="title-modal">Contactez-moi</h2>
-          <img class="close-modal" src="assets/icons/close.svg" onclick="closeModal()" alt="" />
+          <button class="close-modal" onclick="closeModal()" alt="Close contact form">
+            <img src="assets/icons/close.svg" alt="">
+          </button>
         </header>
 				<form 
           id="form"
@@ -88,7 +105,7 @@
                 name="message"
               ></textarea><br>
             </div>
-          <button class="contact_button" type="submit">Envoyer</button>
+          <button class="contact-button" type="submit">Envoyer</button>
 				</form>
       </div>
 		</div>
@@ -96,5 +113,6 @@
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/sortMedias.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

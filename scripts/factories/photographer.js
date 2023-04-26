@@ -51,7 +51,7 @@ function photographerFactory(data) {
         const namePhotographer = document.createElement('h1');
         const locationPhotographer = document.createElement('p');
         const sloganPhotographer = document.createElement('p');
-        const btnContact = document.querySelector('.contact_button');
+        const btnContact = document.querySelector('.contact-button');
         const imgPhotographer = document.createElement('img');
 
         // text content
@@ -98,19 +98,47 @@ function mediaFactory(photographer, data) {
 
     function getMediaCardDOM() {
 
+        // article media
         const media = document.createElement("article");
         media.classList = "media-article";
 
+        // lightbox
+        const lightboxLink = document.createElement('a');
+        lightboxLink.setAttribute('href', '#');
+        const lightbox = document.querySelector('.content-lightbox');
+        const lightboxDiv = document.createElement('div');
+        lightboxDiv.setAttribute('class', 'lightbox-slide');
+
         // Media Image or Video
-        if (image != undefined)  {
+        if (image)  {
             const thumb = document.createElement("img");
             thumb.setAttribute("src", path+image);
-            media.appendChild(thumb);
+            thumb.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSlide();
+                displayLightbox();
+            });
+            media.appendChild(lightboxLink);
+            const lightboxImg = document.createElement('img');
+            lightboxImg.setAttribute('src', path+image);
+            lightboxImg.setAttribute('alt', title);
+            lightboxLink.appendChild(thumb);
+            lightboxDiv.appendChild(lightboxImg);
         }
         else {
             const thumb = document.createElement("video");
             thumb.setAttribute("src", path+video);
-            media.appendChild(thumb);
+            lightboxLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSlide();
+                displayLightbox();
+            });
+            media.appendChild(lightboxLink);
+            const lightboxVideo = document.createElement('video');
+            lightboxVideo.setAttribute('src', path+video);
+            lightboxVideo.setAttribute('controls', '');
+            lightboxLink.appendChild(thumb);
+            lightboxDiv.appendChild(lightboxVideo);
         }
 
         // Info media div (title + likes)
@@ -118,16 +146,24 @@ function mediaFactory(photographer, data) {
         infoMedia.classList = "info-media";
 
         // Media title
+        const titleLink = document.createElement('a');
+        titleLink.setAttribute('href', '#');
         const titleMedia = document.createElement("h2");
         titleMedia.classList = "title-media";
         titleMedia.textContent = title;
+        const titleLightbox = document.createElement('h2');
+        titleLightbox.classList = "title-media";
+        titleLightbox.textContent = title;
+        titleLink.addEventListener('click', (e) => {
+            showSlide();
+            displayLightbox();
+        });
 
         // Media likes
         const likesMedia = document.createElement("span");
         likesMedia.className = "likes-media";
         likesMedia.innerHTML = likes + "<i class='fa-solid fa-heart'></i>";
         likesMedia.setAttribute("aria-label", "likes");
-
 
         // click on like icon of media and increment total likes
         let isLiked = false;
@@ -153,8 +189,12 @@ function mediaFactory(photographer, data) {
 
         // add elements to article
         media.appendChild(infoMedia);
-        infoMedia.appendChild(titleMedia);
+        infoMedia.appendChild(titleLink);
+        titleLink.appendChild(titleMedia);
         infoMedia.appendChild(likesMedia);
+        // add elements to the lightbox
+        lightboxDiv.appendChild(titleLightbox);
+        lightbox.appendChild(lightboxDiv);
 
         return media;
 

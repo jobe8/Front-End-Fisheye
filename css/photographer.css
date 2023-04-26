@@ -6,6 +6,11 @@ img {
     object-fit: cover;
 }
 
+button {
+    text-decoration: none;
+    border: none;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -44,7 +49,7 @@ img {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3), 0px 50px 70px rgba(0, 0, 0, 0.1);  
 }
 
-.contact_button {
+.contact-button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -59,7 +64,7 @@ img {
 
 /* modal */
 
-#contact_modal {
+#contact-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -81,6 +86,10 @@ img {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+}
+
+.close-modal {
+    background-color: transparent;
 }
 
 .modal header {
@@ -159,9 +168,6 @@ form #message {
 }
 
 
-/* Sort */
-
-
 /* medias */
 
 .medias {
@@ -172,7 +178,7 @@ form #message {
     margin-bottom: 130px;
 }
 
-.medias article {
+.media-article {
     justify-self: center;
     display: flex;
     flex-direction: column;
@@ -189,22 +195,25 @@ form #message {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #901C1C;
+    gap: 10px;
     margin-top: 10px;
 }
 
 .title-media {
-    width: 75%;
     font-size: 24px;
+    color: #901C1C;
 }
 
 .likes-media {
+    display: flex;
+    align-items: center;
+    gap: 7px;
     font-size: 24px;
+    color: #901C1C;
 }
 
 .likes-media i {
     cursor: pointer;
-    margin-left: 7px;
 }
 
 
@@ -244,7 +253,7 @@ form #message {
 
 
 
-/* filter */
+/* Sort */
 
 .sort-medias {
     margin: 50px 0 50px 0;
@@ -267,5 +276,43 @@ form #message {
 }
 
 
-
 /* lightbox */
+
+#lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#lightbox-modal .modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 54px;
+}
+
+.close-lightbox {
+    position: absolute;
+    right: 75px;
+    top: 75px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.lightbox-slide img, .lightbox-slide video {
+    max-width: 1050px;
+    max-height: 900px;
+    border-radius: 5px;
+}
