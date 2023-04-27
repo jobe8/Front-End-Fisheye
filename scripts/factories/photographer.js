@@ -91,13 +91,15 @@ function photographerFactory(data) {
 
 
 
-function mediaFactory(photographer, data) {
+function mediaFactory(photographer, data, nb) {
 
     const path = `assets/photographers/${photographer}/`;
     const { id, likes, title, video, image, date, price} = data;
 
-    function getMediaCardDOM() {
+    let nbOfMedia = nb;
 
+    function getMediaCardDOM() {
+        
         // article media
         const media = document.createElement("article");
         media.classList = "media-article";
@@ -105,58 +107,55 @@ function mediaFactory(photographer, data) {
         // lightbox
         const lightboxLink = document.createElement('a');
         lightboxLink.setAttribute('href', '#');
-        const lightbox = document.querySelector('.content-lightbox');
-        const lightboxDiv = document.createElement('div');
-        lightboxDiv.setAttribute('class', 'lightbox-slide');
+        const contentLightbox = document.querySelector('.content-lightbox');
+        const lightboxMedia = document.createElement('div');
+        lightboxMedia.setAttribute('class', 'lightbox-media');
 
         // Media Image or Video
         if (image) {
             const thumb = document.createElement("img");
             thumb.setAttribute("src", path+image);
+            lightboxLink.appendChild(thumb);
+            media.appendChild(lightboxLink);
+            // open lightbox when clicked on image article
+            const lightboxThumb = document.createElement("img");
+            lightboxThumb.setAttribute("src", path+image);
+            lightboxMedia.appendChild(lightboxThumb);
             thumb.addEventListener('click', (e) => {
                 e.preventDefault();
-                showSlide();
+                toSlide(nbOfMedia);
                 displayLightbox();
             });
-            media.appendChild(lightboxLink);
-            const lightboxImg = document.createElement("img");
-            lightboxImg.setAttribute("src", path+image);
-            lightboxLink.appendChild(thumb);
-            lightboxDiv.appendChild(lightboxImg);
-        }
+        } 
         else if (video) {
             const thumb = document.createElement("video");
             thumb.setAttribute("src", path+video);
-            lightboxLink.addEventListener("click", (e) => {
+            lightboxLink.appendChild(thumb);
+            media.appendChild(lightboxLink);
+            // open lightbox when clicked on video article
+            thumb.addEventListener("click", (e) => {
                 e.preventDefault();
-                showSlide();
+                toSlide(nbOfMedia);
                 displayLightbox();
             });
-            media.appendChild(lightboxLink);
             const lightboxVideo = document.createElement('video');
-            lightboxVideo.setAttribute('src', path+video);
-            lightboxVideo.setAttribute('controls', '');
-            lightboxLink.appendChild(thumb);
-            lightboxDiv.appendChild(lightboxVideo);
+            lightboxVideo.setAttribute("src", path+video);
+            lightboxVideo.setAttribute("controls", '');
+            lightboxMedia.appendChild(lightboxVideo);
         }
 
         // Info media div (title + likes)
-        const infoMedia = document.createElement('div');
+        const infoMedia = document.createElement("div");
         infoMedia.classList = "info-media";
 
         // Media title
-        const titleLink = document.createElement('a');
-        titleLink.setAttribute('href', '#');
         const titleMedia = document.createElement("h2");
         titleMedia.classList = "title-media";
         titleMedia.textContent = title;
+        // title of media in lightbox
         const titleLightbox = document.createElement('h2');
         titleLightbox.classList = "title-media";
         titleLightbox.textContent = title;
-        titleLink.addEventListener('click', (e) => {
-            showSlide();
-            displayLightbox();
-        });
 
         // Media likes
         const likesMedia = document.createElement("span");
@@ -188,12 +187,11 @@ function mediaFactory(photographer, data) {
 
         // add elements to article
         media.appendChild(infoMedia);
-        infoMedia.appendChild(titleLink);
-        titleLink.appendChild(titleMedia);
+        infoMedia.appendChild(titleMedia);
         infoMedia.appendChild(likesMedia);
         // add elements to the lightbox
-        lightboxDiv.appendChild(titleLightbox);
-        lightbox.appendChild(lightboxDiv);
+        lightboxMedia.appendChild(titleLightbox);
+        contentLightbox.appendChild(lightboxMedia);
 
         return media;
 

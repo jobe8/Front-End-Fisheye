@@ -36,14 +36,16 @@ async function displayMedia(photographer, medias) {
         sortedMedias = true;
     }
 
+    let nbMedia = 0;
     let total_likes = 0;
 
     medias.forEach((media) => {
         // adds up the likes of all the media in the insert 
         total_likes += media.likes; 
-        const mediaModel = mediaFactory(photographer, media);
+        const mediaModel = mediaFactory(photographer, media, nbMedia);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
+        nbMedia++;
     });
 
     // display result total likes of all the media in insert
@@ -64,7 +66,7 @@ async function init() {
         firstname = firstname.replace("-", " ");
     } 
 
-    const medias = media.filter((m) => id === m.photographerId);
+    const medias = media.filter((media) => id === media.photographerId);
 
     displayMedia(firstname, medias);
     sortMedias(medias, firstname);
