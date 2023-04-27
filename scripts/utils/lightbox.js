@@ -19,6 +19,10 @@ function displayLightbox() {
   document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") { 
       closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      changeSlide(-1);
+    } else if (e.key === 'ArrowRight') {
+        changeSlide(1);
     }
   })
 }

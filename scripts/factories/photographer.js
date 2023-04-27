@@ -110,7 +110,7 @@ function mediaFactory(photographer, data) {
         lightboxDiv.setAttribute('class', 'lightbox-slide');
 
         // Media Image or Video
-        if (image)  {
+        if (image) {
             const thumb = document.createElement("img");
             thumb.setAttribute("src", path+image);
             thumb.addEventListener('click', (e) => {
@@ -119,16 +119,15 @@ function mediaFactory(photographer, data) {
                 displayLightbox();
             });
             media.appendChild(lightboxLink);
-            const lightboxImg = document.createElement('img');
-            lightboxImg.setAttribute('src', path+image);
-            lightboxImg.setAttribute('alt', title);
+            const lightboxImg = document.createElement("img");
+            lightboxImg.setAttribute("src", path+image);
             lightboxLink.appendChild(thumb);
             lightboxDiv.appendChild(lightboxImg);
         }
-        else {
+        else if (video) {
             const thumb = document.createElement("video");
             thumb.setAttribute("src", path+video);
-            lightboxLink.addEventListener('click', (e) => {
+            lightboxLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 showSlide();
                 displayLightbox();
