@@ -17,7 +17,7 @@
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact-button" onclick="displayModal()" aria-label="Contact me">Contactez-moi</button>
       </div>
       <div class="sort-medias">
         <label for="sort">Trier par</label>
@@ -32,31 +32,31 @@
       <div class="insert-info">
         <span class="counter-likes">
           <p class="total-likes"></p>
-          <em class="fa-solid fa-heart"></em>
+          <em class="fa-solid fa-heart" aria-label="likes"></em>
         </span>
         <span class="price"></span>
       </div>
     </main>
-    <div id="lightbox-modal" aria-label="image closeup view" aria-hidden="true" aria-modal="true" tabindex="0" role="dialog">
+    <div id="lightbox-modal" aria-label="image closeup view" aria-hidden="true" role="dialog" aria-describedby="modal lightbox">
 			<div class="modal">
         <figure class="left">
-          <a href="#" class="prev" alt="Previous image" onclick="changeSlide(-1)"><img src="assets/icons/left-arrow.svg" alt="left-arrow"></a>
+          <a href="#" class="prev" alt="Previous image" onclick="changeSlide(-1)"><img src="assets/icons/left-arrow.svg"></a>
         </figure>
         <div class="content-lightbox">
         </div>
         <figure class="right">
-          <a href="#" class="next" alt="Next image" onclick="changeSlide(1)"><img src="assets/icons/right-arrow.svg" alt="right-arrow"></a>
+          <a href="#" class="next" alt="Next image" onclick="changeSlide(1)"><img src="assets/icons/right-arrow.svg"></a>
         </figure>
-        <button class="close-lightbox" alt="dialog" onclick="closeLightbox()">
-          <img src="assets/icons/close-lightbox.svg" alt="cross-close">
+        <button class="close-lightbox" alt="close lightbox" onclick="closeLightbox()">
+          <img src="assets/icons/close-lightbox.svg" alt="">
         </button>
       </div>
     </div>
-    <div id="contact-modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+    <div id="contact-modal" aria-hidden="true" role="dialog" aria-describedby="modal contact form">
 			<div class="modal">
 				<header class="header-modal">
           <h2 class="title-modal">Contactez-moi</h2>
-          <button class="close-modal" onclick="closeModal()" alt="Close contact form">
+          <button class="close-modal" onclick="closeModal()" alt="close contact form">
             <img src="assets/icons/close.svg" alt="">
           </button>
         </header>
@@ -65,24 +65,26 @@
         >
             <div
               class="formData">
-              <label for="first">Prénom</label><br>
+              <label for="firstname">Prénom</label><br>
               <input
                 class="text-control"
                 type="text"
-                id="first"
-                name="first"
+                id="firstname"
+                name="firstname"
                 minlength="2"
+                aria-required=true
               /><br>
             </div>
             <div
               class="formData">
-              <label for="last">Nom</label><br>
+              <label for="lastname">Nom</label><br>
               <input
                 class="text-control"
                 type="text"
-                id="last"
-                name="last"
+                id="lastname"
+                name="lastname"
                 minlength="2"
+                aria-required=true
               /><br>
             </div>
             <div
@@ -93,6 +95,7 @@
                 type="email"
                 id="email"
                 name="email"
+                aria-required=true
               /><br>
             </div>
             <div
@@ -103,6 +106,7 @@
                 type="text"
                 id="message"
                 name="message"
+                aria-required=true
               ></textarea><br>
             </div>
           <button class="send-button" aria-label="send" type="submit">Envoyer</button>

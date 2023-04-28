@@ -3,12 +3,14 @@ const modalLightbox = document.getElementById("lightbox-modal");
 const closeBtnLightbox = document.querySelector('.close-lightbox');
 const leftArrow = document.querySelector('.left');
 const rightArrow = document.querySelector('.right');
+const bodyHTML = document.querySelector('body');
+const mainHTML = document.querySelector('#main');
 
 function displayLightbox() {
   modalLightbox.style.display = "block";
 
   // Set attributes
-  main.setAttribute('aria-hidden', 'true');
+  mainHTML.setAttribute('aria-hidden', 'true');
   modalLightbox.setAttribute('aria-hidden', 'false');
 
   // focus
@@ -17,7 +19,7 @@ function displayLightbox() {
   rightArrow.focus();
 
   // Disable scroll out of modal
-  body.style.overflow = "hidden";
+  bodyHTML.style.overflow = "hidden";
 
   // keyboard : press key for close or change content in lightbox
   document.addEventListener('keydown', (e) => {
@@ -44,19 +46,18 @@ function closeLightbox() {
   body.style.overflow = "auto";
 }
 
-
 // Initialize here and run showSlide() to give your lightbox a default state.
 let slideIndex = 0;
 
 // Next/previous controls : Note that you are assigning new values here to our slideIndex.
 function changeSlide(n) {
     showSlide(slideIndex += n);
-  };
+  }
 
 // Thumbnail image controls
   function toSlide(n) {
     showSlide(slideIndex = n);
-  };
+  }
   
 // This is your logic for the light box. It will decide which slide to show 
 function showSlide(n) {

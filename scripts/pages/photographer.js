@@ -9,7 +9,7 @@ async function getPhotographers() {
     if (r.ok == true) {
         return r.json();
     }
-    throw new Error('Impossible de contacter le serveur')
+    throw new Error('Impossible')
 }
 getPhotographers().then(photographers => console.log(photographers))
 
@@ -22,7 +22,6 @@ async function displayDataHeader(photographer) {
     headerSection.appendChild(userHeaderDOM);
 }
 
-// Initialize for medias sort default : by popularity
 let sortedMedias = false;
 
 // Medias block
@@ -40,17 +39,15 @@ async function displayMedia(photographer, medias) {
     let total_likes = 0;
 
     medias.forEach((media) => {
-        // adds up the likes of all the media in the insert 
+        // sum "likes of all media + total likes in the insert" and stock result in insert
         total_likes += media.likes; 
         const mediaModel = mediaFactory(photographer, media, nbMedia);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
         nbMedia++;
     });
-
-    // display result total likes of all the media in insert
+    // display result "total_likes += media.likes;" in insert
     totalLikes.innerHTML = total_likes;
-
 }
 
 async function init() {

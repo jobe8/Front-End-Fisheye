@@ -71,7 +71,6 @@ function photographerFactory(data) {
         imgPhotographer.setAttribute("alt", "");
 
         // fixed insert photopgrapher with total likes and price
-
         const pricePhotographer = document.querySelector(".price");
         pricePhotographer.textContent = price + "€ / jour";
 
@@ -88,7 +87,6 @@ function photographerFactory(data) {
 
     return { name, picture, getUserCardDOM, getUserHeaderDOM }
 }
-
 
 
 function mediaFactory(photographer, data, nb) {
@@ -167,7 +165,7 @@ function mediaFactory(photographer, data, nb) {
         let isLiked = false;
         let mediaLikes = Number.parseInt(likes, 10);
 
-        likesMedia.addEventListener('click', (event) => {
+        likesMedia.addEventListener('click', () => {
             const totalLikes = document.querySelector('.total-likes');
             // if the like icon hasn't been clicked
             if (isLiked == false) {
@@ -195,7 +193,7 @@ function mediaFactory(photographer, data, nb) {
 
         return media;
 
-    } 
+    }
 
     return { getMediaCardDOM };
 }

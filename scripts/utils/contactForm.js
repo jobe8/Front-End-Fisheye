@@ -4,8 +4,8 @@ const main = document.querySelector('#main');
 const modal = document.getElementById("contact-modal");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById('form');
-const first = document.getElementById('first');
-const last = document.getElementById('last');
+const first = document.getElementById('firstname');
+const last = document.getElementById('lastname');
 const email = document.getElementById('email');
 const message = document.getElementById('message');
 const openModalBtn = document.querySelector('.contact-button');
@@ -84,6 +84,9 @@ form.addEventListener('submit', (e) => {
 function displayError(element, message) {
   element.setAttribute('data-error', message)
   element.setAttribute('data-error-visible', true)
+  element.setAttribute('aria-invalid', true)
+  element.setAttribute('aria-describedby', message)
+  element.setAttribute('role', alert)
 }
 // function for remove error message
 function removeError(element) {
